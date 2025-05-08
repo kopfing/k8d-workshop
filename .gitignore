@@ -1,0 +1,36 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore kubeconfig and other sensitive files
+kubeconfig_*
+
+# Ignore Docker files
+*.log
+*.pid
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore build artifacts
+dist/
+build/
+
+# Ignore temporary files
+*.swp
+*.swo
+*~
+
+

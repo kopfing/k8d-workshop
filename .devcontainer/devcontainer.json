@@ -1,0 +1,24 @@
+{
+  "name": "Carrot & Company K8s Workshop Checker",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "../",
+    "args": {}
+  },
+  "forwardPorts":[
+    5000
+  ],
+  "runArgs": [
+    "--add-host=parent.localhost:host-gateway"
+  ],
+  "containerEnv": {
+    "KUBECONFIG": "${containerWorkspaceFolder}/kubeconfig_workshop"
+  },
+  "postStartCommand": ".devcontainer/start.sh",
+  "postCreateCommand": ".devcontainer/postCreate.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "dockerDashComposeVersion": "none" // needed to run on windows, otherwise it fails (2025-05-05)
+    }
+  }
+}

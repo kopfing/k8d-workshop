@@ -1,0 +1,29 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: workshop
+servers: 1
+agents: 3
+image: "rancher/k3s:v1.32.4-k3s1"
+ports:
+  - port: 80:80
+    nodeFilters:
+      - loadbalancer
+  - port: 443:443
+    nodeFilters:
+      - loadbalancer
+registries:
+  create:
+    name: "myregistry"
+    hostPort: "5000"
+  config: |
+    mirrors:
+      "myregistry:5000":
+        endpoint:
+        - http://myregistry:5000 
+options:
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
