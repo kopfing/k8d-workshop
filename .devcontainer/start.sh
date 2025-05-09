@@ -6,3 +6,8 @@
 
 mise trust -a
 mise install
+eval "$(mise activate bash)"
+
+# install netshoot kubectl plugin
+krew index add netshoot https://github.com/nilic/kubectl-netshoot.git
+krew install netshoot/netshoot
