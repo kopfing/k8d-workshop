@@ -1,5 +1,5 @@
 {
-  "name": "Carrot & Company K8s Workshop Checker",
+  "name": "Carrot & Company K8s Workshop Environment",
   "build": {
     "dockerfile": "Dockerfile",
     "context": "../",
