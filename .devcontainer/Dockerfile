@@ -9,7 +9,7 @@ ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
 # Shims are better for non-interactive shells, 
 # we use the eval "$(mise activate zsh)" in the zshrc from devcontainer.json instead
 #ENV PATH="/mise/shims:$PATH"  
-ENV MISE_VERSION="v2025.5.2"
+ENV MISE_VERSION="v2025.5.5"
 
 RUN curl https://mise.run | sh && \
     mkdir -p $MISE_DATA_DIR $MISE_CONFIG_DIR $MISE_CACHE_DIR && \

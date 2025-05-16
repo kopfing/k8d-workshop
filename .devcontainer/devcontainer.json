@@ -9,7 +9,7 @@
     5000
   ],
   "runArgs": [
-    "--add-host=parent.localhost:host-gateway"
+    "--add-host=host.docker.internal:host-gateway"
   ],
   "containerEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/kubeconfig_workshop"
