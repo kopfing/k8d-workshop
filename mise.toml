@@ -2,6 +2,6 @@
 helm = "3.17.3"
 k3d = "5.8.3"
 krew = "0.4.5"
-kubectl = "1.33.0"
+kubectl = "1.33.1"
 kubens = "0.9.5"
 
