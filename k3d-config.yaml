@@ -23,9 +23,10 @@ registries:
       "myregistry:5000":
         endpoint:
         - http://myregistry:5000 
-options:
-  k3s:
-    extraArgs:
-      - arg: --disable=traefik
-        nodeFilters:
-          - server:*
+# Because we commented out the following lines, the default k3s Traefik ingress controller is activated (that's the default).
+# options:
+#   k3s:
+#     extraArgs:
+#       - arg: --disable=traefik
+#         nodeFilters:
+#           - server:*
