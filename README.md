@@ -58,7 +58,7 @@ kubectl apply -f hello-world.yaml
 On your **local machine (laptop)** open a browser and go to the following URL:
 
 ```
-http://localhost
+http://hello.localhost
 ```
 
 You should see a page with the text **"Hello World! Everything is working!"**
