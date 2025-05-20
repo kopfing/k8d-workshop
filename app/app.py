@@ -9,7 +9,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import argparse
 
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.1.0"
 DB_PARAMS = {
     'host': os.environ.get('POSTGRES_HOST', 'db'),
     'port': os.environ.get('POSTGRES_PORT', 5432),
