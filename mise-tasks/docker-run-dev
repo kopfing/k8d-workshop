@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+docker run \
+    -p 3000:3000 \
+    --rm \
+    --name demo-app-dev-container \
+    --mount type=bind,src=$HOST_PROJECT_PATH/app,dst=/app \
+    demo-app:dev

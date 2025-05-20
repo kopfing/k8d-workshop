@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K8s Workshop Demo App v1</title>
+  <style>body{font-family:sans-serif;margin:2em;}#info{margin-top:1em;}</style>
+</head>
+<body>
+  <h1>K8s Workshop Demo App v1</h1>
+  <div id="info">Loading...</div>
+  <script>
+    async function fetchInfo() {
+      const res = await fetch('/api/info');
+      const data = await res.json();
+      document.getElementById('info').innerText =
+        `Timestamp: ${data.timestamp}\nHostname: ${data.hostname}\nApp Version: ${data.version}`;
+    }
+    setInterval(fetchInfo, 1000);
+    fetchInfo();
+  </script>
+</body>
+</html>
