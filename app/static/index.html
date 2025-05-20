@@ -1,22 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>K8s Workshop Demo App v1</title>
-  <style>body{font-family:sans-serif;margin:2em;}#info{margin-top:1em;}</style>
+  <title>K8s Workshop Demo App v2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+    }
+
+    #info {
+      margin-top: 1em;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid #ccc;
+      padding: 4px;
+    }
+
+    td {
+      padding: 5px 10px;
+    }
+    .info {
+      line-height: 1.5;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>K8s Workshop Demo App v1</h1>
-  <div id="info">Loading...</div>
+  <h1>K8s Workshop Demo App v2</h1>
+  <div class="info" id="healthz">Health: ...</div>
+  <div class="info" id="readyz">Ready: ...</div>
+  <div class="info" id="info">Info is loading...</div>
+  <div id="records"></div>
   <script>
     async function fetchInfo() {
       const res = await fetch('/api/info');
       const data = await res.json();
       document.getElementById('info').innerText =
-        `Timestamp: ${data.timestamp}\nHostname: ${data.hostname}\nApp Version: ${data.version}`;
+        `Timestamp: ${data.timestamp}\nHostname: ${data.hostname}\nApp Version: ${data.version}\nAvg req/sec (last 10): ${data.avg_req_per_sec.toFixed(2)}`;
+      let html = '<h2>Last 10 Requests</h2><table><tr><th>ID</th><th>Timestamp</th><th>Hostname</th><th>Version</th></tr>';
+      for (const rec of data.last_10_records) {
+        html += `<tr><td>${rec.id}</td><td>${rec.timestamp}</td><td>${rec.hostname}</td><td>${rec.version}</td></tr>`;
+      }
+      html += '</table>';
+      document.getElementById('records').innerHTML = html;
     }
+
+    async function fetchHealthz() {
+      try {
+        const res = await fetch('/healthz');
+        const data = await res.json();
+        document.getElementById('healthz').innerText = `Health: ${data.status}`;
+      } catch {
+        document.getElementById('healthz').innerText = 'Health: error';
+      }
+    }
+
+    async function fetchReadyz() {
+      try {
+        const res = await fetch('/readyz');
+        const data = await res.json();
+        document.getElementById('readyz').innerText = `Ready: ${data.status}`;
+      } catch {
+        document.getElementById('readyz').innerText = 'Ready: error';
+      }
+    }
+
     setInterval(fetchInfo, 1000);
+    setInterval(fetchHealthz, 1000);
+    setInterval(fetchReadyz, 1000);
     fetchInfo();
+    fetchHealthz();
+    fetchReadyz();
   </script>
 </body>
+
 </html>

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+docker run \
+    --rm \
+    --name demo-postgres \
+    --network=demo-network \
+    -e POSTGRES_PASSWORD=demo \
+    -e POSTGRES_USER=demo \
+    -e POSTGRES_DB=demo \
+    -e POSTGRES_PORT=5432 \
+    -d postgres:17-alpine

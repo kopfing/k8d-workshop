@@ -4,4 +4,6 @@ docker run \
     -p 3000:3000 \
     --rm \
     --name demo-app-container \
+    --network=demo-network \
+    -e POSTGRES_HOST=demo-postgres \
     demo-app
