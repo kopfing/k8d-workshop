@@ -1,0 +1,6 @@
+services:
+  demo-app-container:
+    build:
+      target: dev
+    volumes:
+      - $HOST_PROJECT_PATH/app:/app
